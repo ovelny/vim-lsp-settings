@@ -1,20 +1,21 @@
+call lsp_settings#register_server({
+    \ 'name': 'rust-analyzer',
+    \ 'cmd': {server_info->lsp_settings#get('rust-analyzer', 'cmd', [lsp_settings#exec_path('rust-analyzer')]+lsp_settings#get('rust-analyzer', 'args', []))},
+    \ 'root_uri':{server_info->lsp_settings#get('rust-analyzer', 'root_uri', lsp_settings#root_uri('rust-analyzer'))},
+    \ 'initialization_options': lsp_settings#get('rust-analyzer', 'initialization_options', {
+    \     'completion': {
+    \         'autoimport': { 'enable': v:true },
+    \     },
+    \ }),
+    \ 'allowlist': lsp_settings#get('rust-analyzer', 'allowlist', ['rust']),
+    \ 'blocklist': lsp_settings#get('rust-analyzer', 'blocklist', []),
+    \ 'config': lsp_settings#get('rust-analyzer', 'config', lsp_settings#server_config('rust-analyzer')),
+    \ 'workspace_config': lsp_settings#get('rust-analyzer', 'workspace_config', {}),
+    \ 'semantic_highlight': lsp_settings#get('rust-analyzer', 'semantic_highlight', {}),
+    \ })
+
 augroup vim_lsp_settings_rust_analyzer
   au!
-  LspRegisterServer {
-      \ 'name': 'rust-analyzer',
-      \ 'cmd': {server_info->lsp_settings#get('rust-analyzer', 'cmd', [lsp_settings#exec_path('rust-analyzer')]+lsp_settings#get('rust-analyzer', 'args', []))},
-      \ 'root_uri':{server_info->lsp_settings#get('rust-analyzer', 'root_uri', lsp_settings#root_uri('rust-analyzer'))},
-      \ 'initialization_options': lsp_settings#get('rust-analyzer', 'initialization_options', {
-      \     'completion': {
-      \         'autoimport': { 'enable': v:true },
-      \     },
-      \ }),
-      \ 'allowlist': lsp_settings#get('rust-analyzer', 'allowlist', ['rust']),
-      \ 'blocklist': lsp_settings#get('rust-analyzer', 'blocklist', []),
-      \ 'config': lsp_settings#get('rust-analyzer', 'config', lsp_settings#server_config('rust-analyzer')),
-      \ 'workspace_config': lsp_settings#get('rust-analyzer', 'workspace_config', {}),
-      \ 'semantic_highlight': lsp_settings#get('rust-analyzer', 'semantic_highlight', {}),
-      \ }
   autocmd User lsp_setup call s:register_command()
   autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
@@ -277,7 +278,7 @@ endfunction
 function! s:register_command() abort
   if get(s:, 'setup') | return | endif
   let s:setup = 1
-  augroup vimlsp_settings_rust_analyzer
+  augroup vim_lsp_settings_rust_analyzer_commands
     au!
   augroup END
   if exists('*lsp#register_command')
