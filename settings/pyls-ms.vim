@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_pyls_ms
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'pyls-ms',
       \ 'cmd': {server_info->lsp_settings#get('pyls-ms', 'cmd', [lsp_settings#exec_path('pyls-ms')]+lsp_settings#get('pyls-ms', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('pyls-ms', 'root_uri', lsp_settings#root_uri('pyls-ms'))},
@@ -31,5 +31,5 @@ augroup vim_lsp_settings_pyls_ms
       \   },
       \ }),
       \ 'semantic_highlight': lsp_settings#get('pyls-ms', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END

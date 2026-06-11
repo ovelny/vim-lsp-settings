@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_oxfmt
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'oxfmt',
       \ 'cmd': {server_info->lsp_settings#get('oxfmt', 'cmd', [lsp_settings#exec_path('oxfmt')]+lsp_settings#get('oxfmt', 'args', ['--lsp']))},
       \ 'root_uri':{server_info->lsp_settings#get('oxfmt', 'root_uri', lsp_settings#root_uri('oxfmt'))},
@@ -14,5 +14,5 @@ augroup vim_lsp_settings_oxfmt
       \   },
       \ }),
       \ 'semantic_highlight': lsp_settings#get('oxfmt', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END

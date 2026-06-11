@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_yaml_language_server
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'yaml-language-server',
       \ 'cmd': {server_info->lsp_settings#get('yaml-language-server', 'cmd', [lsp_settings#exec_path('yaml-language-server')]+lsp_settings#get('yaml-language-server', 'args', ['--stdio']))},
       \ 'root_uri':{server_info->lsp_settings#get('yaml-language-server', 'root_uri', lsp_settings#root_uri('yaml-language-server'))},
@@ -10,7 +10,7 @@ augroup vim_lsp_settings_yaml_language_server
       \ 'config': lsp_settings#get('yaml-language-server', 'config', lsp_settings#server_config('yaml-language-server')),
       \ 'workspace_config': lsp_settings#merge('yaml-language-server', 'workspace_config', {'yaml': {'format': {'enable': v:true}, 'schemas': lsp_settings#utils#load_schemas_map('yaml-language-server')}}),
       \ 'semantic_highlight': lsp_settings#get('yaml-language-server', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END
 
 function! s:set_schema(url) abort

@@ -5,7 +5,7 @@ augroup vim_lsp_settings_fennel_ls
   else
     let Fennel_ls_cmd = {server_info->lsp_settings#get('fennel-ls', 'cmd', [lsp_settings#exec_path('fennel-ls')]+lsp_settings#get('fennel-ls', 'args', []))}
   endif
-  LspRegisterServer {
+  call lsp_settings#register_server({
         \ 'name': 'fennel-ls',
         \ 'cmd': Fennel_ls_cmd,
         \ 'root_uri':{server_info->lsp_settings#get('fennel-ls', 'root_uri', lsp_settings#root_uri('fennel-ls'))},
@@ -15,5 +15,5 @@ augroup vim_lsp_settings_fennel_ls
         \ 'config': lsp_settings#get('fennel-ls', 'config', lsp_settings#server_config('fennel-ls')),
         \ 'workspace_config': lsp_settings#get('fennel-ls', 'workspace_config', {}),
         \ 'semantic_highlight': lsp_settings#get('fennel-ls', 'semantic_highlight', {}),
-        \ }
+        \ })
 augroup END

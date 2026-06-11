@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_typos_lsp
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'typos-lsp',
       \ 'cmd': {server_info->lsp_settings#get('typos-lsp', 'cmd', [lsp_settings#exec_path('typos-lsp')]+lsp_settings#get('typos-lsp', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('typos-lsp', 'root_uri', lsp_settings#root_uri('typos-lsp'))},
@@ -10,5 +10,5 @@ augroup vim_lsp_settings_typos_lsp
       \ 'config': lsp_settings#get('typos-lsp', 'config', lsp_settings#server_config('typos-lsp')),
       \ 'workspace_config': lsp_settings#get('typos-lsp', 'workspace_config', {}),
       \ 'semantic_highlight': lsp_settings#get('typos-lsp', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END

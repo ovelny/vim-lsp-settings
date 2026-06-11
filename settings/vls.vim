@@ -42,7 +42,7 @@ augroup vim_lsp_settings_vls
   \ }
 
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
   \ 'name': 'vls',
   \ 'cmd': {server_info->lsp_settings#get('vls', 'cmd', [lsp_settings#exec_path('vls')]+lsp_settings#get('vls', 'args', ['--stdio']))},
   \ 'root_uri':{server_info->lsp_settings#get('vls', 'root_uri', lsp_settings#root_uri('vls'))},
@@ -52,5 +52,5 @@ augroup vim_lsp_settings_vls
   \ 'config': lsp_settings#get('vls', 'config', lsp_settings#server_config('vls')),
   \ 'workspace_config': lsp_settings#get('vls', 'workspace_config', g:vim_lsp_settings_vls_config),
   \ 'semantic_highlight': lsp_settings#get('vls', 'semantic_highlight', {}),
-  \ }
+  \ })
 augroup END

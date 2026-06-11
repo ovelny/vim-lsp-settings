@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_html_languageserver
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'html-languageserver',
       \ 'cmd': {server_info->lsp_settings#get('html-languageserver', 'cmd', [lsp_settings#exec_path('html-languageserver')]+lsp_settings#get('html-languageserver', 'args', ['--stdio']))},
       \ 'root_uri':{server_info->lsp_settings#get('html-langserver', 'root_uri', lsp_settings#root_uri('html-languageserver'))},
@@ -10,5 +10,5 @@ augroup vim_lsp_settings_html_languageserver
       \ 'config': lsp_settings#get('html-languageserver', 'config', lsp_settings#server_config('html-languageserver')),
       \ 'workspace_config': lsp_settings#get('html-languageserver', 'workspace_config', {}),
       \ 'semantic_highlight': lsp_settings#get('html-languageserver', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END

@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_oxlint
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'oxlint',
       \ 'cmd': {server_info->lsp_settings#get('oxlint', 'cmd', [lsp_settings#exec_path('oxlint')]+lsp_settings#get('oxlint', 'args', ['--lsp']))},
       \ 'root_uri':{server_info->lsp_settings#get('oxlint', 'root_uri', lsp_settings#root_uri('oxlint'))},
@@ -10,5 +10,5 @@ augroup vim_lsp_settings_oxlint
       \ 'config': lsp_settings#get('oxlint', 'config', {}),
       \ 'workspace_config': lsp_settings#get('oxlint', 'workspace_config', {}),
       \ 'semantic_highlight': lsp_settings#get('oxlint', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END

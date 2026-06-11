@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_analysis_server_dart_snapshot
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'analysis-server-dart-snapshot',
       \ 'cmd': {server_info->lsp_settings#get('analysis-server-dart-snapshot', 'cmd', [lsp_settings#exec_path('analysis-server-dart-snapshot')]+lsp_settings#get('analysis-server-dart-snapshot', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('analysis-server-dart-snapshot', 'root_uri', lsp_settings#root_uri('analysis-server-dart-snapshot'))},
@@ -10,5 +10,5 @@ augroup vim_lsp_settings_analysis_server_dart_snapshot
       \ 'config': lsp_settings#get('analysis-server-dart-snapshot', 'config', lsp_settings#server_config('analysis-server-dart-snapshot')),
       \ 'workspace_config': lsp_settings#get('analysis-server-dart-snapshot', 'workspace_config', {}),
       \ 'semantic_highlight': lsp_settings#get('analysis-server-dart-snapshot', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END

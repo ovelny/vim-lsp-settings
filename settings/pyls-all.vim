@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_pyls_all
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'pyls-all',
       \ 'cmd': {server_info->lsp_settings#get('pyls-all', 'cmd', [lsp_settings#exec_path('pyls-all')]+lsp_settings#get('pyls-all', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('pyls-all', 'root_uri', lsp_settings#root_uri('pyls-all'))},
@@ -10,5 +10,5 @@ augroup vim_lsp_settings_pyls_all
       \ 'config': lsp_settings#get('pyls-all', 'config', lsp_settings#server_config('pyls-all')),
       \ 'workspace_config': lsp_settings#get('pyls-all', 'workspace_config', {}),
       \ 'semantic_highlight': lsp_settings#get('pyls-all', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END

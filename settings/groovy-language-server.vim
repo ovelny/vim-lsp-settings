@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_groovy_language_server
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'groovy-language-server',
       \ 'cmd': {server_info->lsp_settings#get('groovy-language-server', 'cmd', [lsp_settings#exec_path('groovy-language-server')]+lsp_settings#get('groovy-language-server', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('groovy-language-server', 'root_uri', lsp_settings#root_uri('groovy-language-server'))},
@@ -10,5 +10,5 @@ augroup vim_lsp_settings_groovy_language_server
       \ 'config': lsp_settings#get('groovy-language-server', 'config', lsp_settings#server_config('groovy-language-server')),
       \ 'workspace_config': lsp_settings#get('groovy-language-server', 'workspace_config', {}),
       \ 'semantic_highlight': lsp_settings#get('groovy-language-server', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END

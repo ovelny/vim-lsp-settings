@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_rome
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'rome',
       \ 'cmd': {server_info->lsp_settings#get('rome', 'cmd', [lsp_settings#exec_path('rome')]+lsp_settings#get('rome', 'args', ['lsp']))},
       \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), '.config/'))},
@@ -10,5 +10,5 @@ augroup vim_lsp_settings_rome
       \ 'config': lsp_settings#get('rome', 'config', {}),
       \ 'workspace_config': lsp_settings#get('rome', 'workspace_config', {}),
       \ 'semantic_highlight': lsp_settings#get('rome', 'semantic_highlight', {}),
-      \}
+      \})
 augroup END

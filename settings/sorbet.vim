@@ -10,7 +10,7 @@ endfunction
 
 augroup vim_lsp_settings_sorbet
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'sorbet',
       \ 'cmd': {server_info->lsp_settings#get('sorbet', 'cmd', [lsp_settings#exec_path('sorbet'), lsp#utils#uri_to_path(lsp_settings#root_uri('sorbet')), '--lsp', Vim_lsp_get_watchman_flag()])+lsp_settings#get('sorbet', 'args', [])},
       \ 'root_uri':{server_info->lsp_settings#get('sorbet', 'root_uri', lsp_settings#root_uri('sorbet'))},
@@ -20,5 +20,5 @@ augroup vim_lsp_settings_sorbet
       \ 'config': lsp_settings#get('sorbet', 'config', lsp_settings#server_config('sorbet')),
       \ 'workspace_config': lsp_settings#get('sorbet', 'workspace_config', {}),
       \ 'semantic_highlight': lsp_settings#get('sorbet', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END

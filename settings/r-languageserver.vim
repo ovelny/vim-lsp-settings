@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_r_languageserver
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'r-languageserver',
       \ 'cmd': {server_info->lsp_settings#get('r-languageserver', 'cmd', ['R', '--slave', '-e', 'languageserver::run()']+lsp_settings#get('r-languageserver', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('r-languageserver', 'root_uri', lsp_settings#root_uri('r-languageserver'))},
@@ -10,6 +10,6 @@ augroup vim_lsp_settings_r_languageserver
       \ 'config': lsp_settings#get('r-languageserver', 'config', lsp_settings#server_config('r-languageserver')),
       \ 'workspace_config': lsp_settings#get('r-languageserver', 'workspace_config', {}),
       \ 'semantic_highlight': lsp_settings#get('r-languageserver', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END
 

@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_volar_server
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
   \ 'name': 'volar-server',
   \ 'cmd': {server_info->lsp_settings#get('volar-server', 'cmd', [lsp_settings#exec_path('volar-server')]+lsp_settings#get('volar-server', 'args', ['--stdio']))},
   \ 'root_uri':{server_info->lsp_settings#get('volar-server', 'root_uri', lsp_settings#root_uri('volar-server'))},
@@ -8,7 +8,7 @@ augroup vim_lsp_settings_volar_server
   \ 'allowlist': lsp_settings#get('volar-server', 'allowlist', ['vue', 'typescript']),
   \ 'blocklist': lsp_settings#get('volar-server', 'blocklist', []),
   \ 'config': lsp_settings#get('volar-server', 'config', lsp_settings#server_config('volar-server')),
-  \ }
+  \ })
 augroup END
 
 function s:on_tsserver_request(id, data) abort

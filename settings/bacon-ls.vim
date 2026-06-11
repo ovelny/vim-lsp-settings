@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_bacon_ls
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'bacon-ls',
       \ 'cmd': {server_info->lsp_settings#get('bacon-ls', 'cmd', [lsp_settings#exec_path('bacon-ls')]+lsp_settings#get('bacon-ls', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('bacon-ls', 'root_uri', lsp_settings#root_uri('bacon-ls'))},
@@ -10,5 +10,5 @@ augroup vim_lsp_settings_bacon_ls
       \ 'config': lsp_settings#get('bacon-ls', 'config', lsp_settings#server_config('bacon-ls')),
       \ 'workspace_config': lsp_settings#get('bacon-ls', 'workspace_config', {}),
       \ 'semantic_highlight': lsp_settings#get('bacon-ls', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END

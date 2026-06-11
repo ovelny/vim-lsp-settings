@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_mozuku_lsp
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'mozuku-lsp',
       \ 'cmd': {server_info->lsp_settings#get('mozuku-lsp', 'cmd', [lsp_settings#exec_path('mozuku-lsp')]+lsp_settings#get('mozuku-lsp', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('mozuku-lsp', 'root_uri', lsp_settings#root_uri('mozuku-lsp'))},
@@ -10,7 +10,7 @@ augroup vim_lsp_settings_mozuku_lsp
       \ 'config': lsp_settings#get('mozuku-lsp', 'config', lsp_settings#server_config('mozuku-lsp')),
       \ 'workspace_config': lsp_settings#get('mozuku-lsp', 'workspace_config', {}),
       \ 'semantic_highlight': lsp_settings#get('mozuku-lsp', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END
 
 function! s:on_mozuku_semanticHighlight(data) abort

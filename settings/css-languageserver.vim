@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_css_languageserver
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'css-languageserver',
       \ 'cmd': {server_info->lsp_settings#get('css-languageserver', 'cmd', [lsp_settings#exec_path('css-languageserver')]+lsp_settings#get('css-languageserver', 'args', ['--stdio']))},
       \ 'root_uri':{server_info->lsp_settings#get('css-languageserver', 'root_uri', lsp_settings#root_uri('css-languageserver'))},
@@ -16,5 +16,5 @@ augroup vim_lsp_settings_css_languageserver
       \ }),
       \ 'semantic_highlight': lsp_settings#get('css-languageserver', 'semantic_highlight', {}),
       \ 'deprecated': v:true,
-      \ }
+      \ })
 augroup END

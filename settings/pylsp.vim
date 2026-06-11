@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_pylsp
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'pylsp',
       \ 'cmd': {server_info->lsp_settings#get('pylsp', 'cmd', [lsp_settings#exec_path('pylsp')]+lsp_settings#get('pylsp', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('pylsp', 'root_uri', lsp_settings#root_uri('pylsp'))},
@@ -10,5 +10,5 @@ augroup vim_lsp_settings_pylsp
       \ 'config': lsp_settings#get('pylsp', 'config', lsp_settings#server_config('pylsp')),
       \ 'workspace_config': lsp_settings#get('pylsp', 'workspace_config', {}),
       \ 'semantic_highlight': lsp_settings#get('pylsp', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END

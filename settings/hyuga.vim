@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_hyuga
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'hyuga',
       \ 'cmd': {server_info->lsp_settings#get('hyuga', 'cmd', [lsp_settings#exec_path('hyuga')]+lsp_settings#get('hyuga', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('hyuga', 'root_uri', lsp_settings#root_uri('hyuga'))},
@@ -10,5 +10,5 @@ augroup vim_lsp_settings_hyuga
       \ 'config': lsp_settings#get('hyuga', 'config', lsp_settings#server_config('hyuga')),
       \ 'workspace_config': lsp_settings#get('hyuga', 'workspace_config', {}),
       \ 'semantic_highlight': lsp_settings#get('hyuga', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END

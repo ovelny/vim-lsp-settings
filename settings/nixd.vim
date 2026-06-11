@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_nixd
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'nixd',
       \ 'cmd': {server_info->lsp_settings#get('nixd', 'cmd', lsp_settings#exec_path('nixd'))},
       \ 'root_uri':{server_info->lsp_settings#get('nid', 'root_uri', lsp_settings#root_uri('nixd'))},
@@ -10,5 +10,5 @@ augroup vim_lsp_settings_nixd
       \ 'config': lsp_settings#get('nixd', 'config', lsp_settings#server_config('nixd')),
       \ 'workspace_config': lsp_settings#get('nixd', 'workspace_config', {}),
       \ 'semantic_highlight': lsp_settings#get('nixd', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END

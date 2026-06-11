@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_serve_d
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'serve-d',
       \ 'cmd': {server_info->lsp_settings#get('serve-d', 'cmd', [lsp_settings#exec_path('serve-d')]+lsp_settings#get('serve-d', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('serve-d', 'root_uri', lsp_settings#root_uri('serve-d'))},
@@ -10,5 +10,5 @@ augroup vim_lsp_settings_serve_d
       \ 'config': lsp_settings#get('serve-d', 'config', lsp_settings#server_config('serve-d')),
       \ 'workspace_config': lsp_settings#get('serve-d', 'workspace_config', {}),
       \ 'semantic_highlight': lsp_settings#get('serve-d', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END

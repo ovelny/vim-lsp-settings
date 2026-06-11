@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_julia_language_server
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'julia-language-server',
       \ 'cmd': {server_info->lsp_settings#get('julia-language-server', 'cmd', [lsp_settings#exec_path('julia-language-server')]+lsp_settings#get('julia-language-server', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('julia-language-server', 'root_uri', lsp_settings#root_uri('julia-language-server'))},
@@ -10,5 +10,5 @@ augroup vim_lsp_settings_julia_language_server
       \ 'config': lsp_settings#get('julia-language-server', 'config', lsp_settings#server_config('julia-language-server')),
       \ 'workspace_config': lsp_settings#get('julia-language-server', 'workspace_config', {}),
       \ 'semantic_highlight': lsp_settings#get('julia-language-server', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END

@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_vlang_vls
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'vlang-vls',
       \ 'cmd': {server_info->lsp_settings#get('vlang-vls', 'cmd', [lsp_settings#exec_path('vlang-vls')]+lsp_settings#get('vlang-vls', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('vlang-vls', 'root_uri', lsp_settings#root_uri('vlang-vls'))},
@@ -10,5 +10,5 @@ augroup vim_lsp_settings_vlang_vls
       \ 'config': lsp_settings#get('vlang-vls', 'config', lsp_settings#server_config('vlang-vls')),
       \ 'workspace_config': lsp_settings#get('vlang-vls', 'workspace_config', {}),
       \ 'semantic_highlight': lsp_settings#get('vlang-vls', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END

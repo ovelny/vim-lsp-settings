@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_monastery
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'monastery',
       \ 'cmd': {server_info->lsp_settings#get('monastery', 'cmd', [lsp_settings#exec_path('monastery')]+lsp_settings#get('monastery', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('monastery', 'root_uri', lsp_settings#root_uri('monastery'))},
@@ -10,5 +10,5 @@ augroup vim_lsp_settings_monastery
       \ 'config': lsp_settings#get('monastery', 'config', lsp_settings#server_config('monastery')),
       \ 'workspace_config': lsp_settings#get('monastery', 'workspace_config', {}),
       \ 'semantic_highlight': lsp_settings#get('monastery', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END

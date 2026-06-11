@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_pyright_langserver
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'pyright-langserver',
       \ 'cmd': {server_info->lsp_settings#get('pyright-langserver', 'cmd', [lsp_settings#exec_path('pyright-langserver')]+lsp_settings#get('pyright-langserver', 'args', ['--stdio']))},
       \ 'root_uri':{server_info->lsp_settings#get('pyright-langserver', 'root_uri', lsp_settings#root_uri('pyright-langserver'))},
@@ -16,5 +16,5 @@ augroup vim_lsp_settings_pyright_langserver
       \   },
       \ }),
       \ 'semantic_highlight': lsp_settings#get('pyright-langserver', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END

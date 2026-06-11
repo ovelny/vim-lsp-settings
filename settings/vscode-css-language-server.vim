@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_vscode_css_language_server
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'vscode-css-language-server',
       \ 'cmd': {server_info->lsp_settings#get('vscode-css-language-server', 'cmd', [lsp_settings#exec_path('vscode-css-language-server')]+lsp_settings#get('vscode-css-language-server', 'args', ['--stdio']))},
       \ 'root_uri':{server_info->lsp_settings#get('vscode-css-language-server', 'root_uri', lsp_settings#root_uri('vscode-css-language-server'))},
@@ -15,5 +15,5 @@ augroup vim_lsp_settings_vscode_css_language_server
       \   'scss': {'lint': {'validProperties': []}},
       \ }),
       \ 'semantic_highlight': lsp_settings#get('vscode-css-language-server', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END

@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_prolog_lsp_server
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'prolog-lsp_server',
       \ 'cmd': {server_info->lsp_settings#get('prolog-lsp_server', 'cmd', [lsp_settings#exec_path('prolog-lsp_server')]+lsp_settings#get('prolog-lsp_server', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('prolog-lsp_server', 'root_uri', lsp_settings#root_uri('prolog-lsp_server'))},
@@ -10,5 +10,5 @@ augroup vim_lsp_settings_prolog_lsp_server
       \ 'config': lsp_settings#get('prolog-lsp_server', 'config', lsp_settings#server_config('prolog-lsp_server')),
       \ 'workspace_config': lsp_settings#get('prolog-lsp_server', 'workspace_config', {}),
       \ 'semantic_highlight': lsp_settings#get('prolog-lsp_server', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END

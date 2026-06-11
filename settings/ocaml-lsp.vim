@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_ocaml_lsp
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'ocaml-lsp',
       \ 'cmd': {server_info->lsp_settings#get('ocaml-lsp', 'cmd', [lsp_settings#exec_path('ocaml-lsp')]+lsp_settings#get('ocaml-lsp', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('ocaml-lsp', 'root_uri', lsp_settings#root_uri('ocaml-lsp'))},
@@ -10,6 +10,6 @@ augroup vim_lsp_settings_ocaml_lsp
       \ 'config': lsp_settings#get('ocaml-lsp', 'config', lsp_settings#server_config('ocaml-lsp')),
       \ 'workspace_config': lsp_settings#get('ocaml-lsp', 'workspace_config', {}),
       \ 'semantic_highlight': lsp_settings#get('ocaml-lsp', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END
 

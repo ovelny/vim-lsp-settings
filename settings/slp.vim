@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_slp
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'slp',
       \ 'cmd': {server_info->lsp_settings#get('slp', 'cmd', [lsp_settings#exec_path('slp')]+lsp_settings#get('slp', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('slp', 'root_uri', lsp_settings#root_uri('slp'))},
@@ -10,5 +10,5 @@ augroup vim_lsp_settings_slp
       \ 'config': lsp_settings#get('slp', 'config', lsp_settings#server_config('slp')),
       \ 'workspace_config': lsp_settings#get('slp', 'workspace_config', {}),
       \ 'semantic_highlight': lsp_settings#get('slp', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END

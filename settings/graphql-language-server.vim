@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_graphql-language-server
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'graphql-language-server',
       \ 'cmd': {server_info->lsp_settings#get('graphql-language-server', 'cmd', [lsp_settings#exec_path('graphql-language-server')]+lsp_settings#get('graphql-language-server', 'args', ['server', '--method', 'stream']))},
       \ 'root_uri':{server_info->lsp_settings#get('graphql-language-server', 'root_uri', lsp_settings#root_uri('graphql-language-server'))},
@@ -10,5 +10,5 @@ augroup vim_lsp_settings_graphql-language-server
       \ 'config': lsp_settings#get('graphql-language-server', 'config', lsp_settings#server_config('graphql-language-server')),
       \ 'workspace_config': lsp_settings#get('graphql-language-server', 'workspace_config', {}),
       \ 'semantic_highlight': lsp_settings#get('graphql-language-server', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END

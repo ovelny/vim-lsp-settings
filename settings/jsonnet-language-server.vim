@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_jsonnet_language_server
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'jsonnet-language-server',
       \ 'cmd': {server_info->lsp_settings#get('jsonnet-language-server', 'cmd', [lsp_settings#exec_path('jsonnet-language-server')]+lsp_settings#get('jsonnet-language-server', 'args', ['-t']))},
       \ 'root_uri':{server_info->lsp_settings#get('jsonnet-language-server', 'root_uri', lsp_settings#root_uri('jsonnet-language-server'))},
@@ -12,5 +12,5 @@ augroup vim_lsp_settings_jsonnet_language_server
       \   'jsonnet': {'lint': {'validProperties': []}},
       \ }),
       \ 'semantic_highlight': lsp_settings#get('jsonnet-language-server', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END

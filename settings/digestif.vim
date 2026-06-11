@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_digestif
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'digestif',
       \ 'cmd': {server_info->lsp_settings#get('digestif', 'cmd', [lsp_settings#exec_path('digestif')]+lsp_settings#get('digestif', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('digestif', 'root_uri', lsp_settings#root_uri('digestif'))},
@@ -10,5 +10,5 @@ augroup vim_lsp_settings_digestif
       \ 'config': lsp_settings#get('digestif', 'config', lsp_settings#server_config('digestif')),
       \ 'workspace_config': lsp_settings#get('digestif', 'workspace_config', {}),
       \ 'semantic_highlight': lsp_settings#get('digestif', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END

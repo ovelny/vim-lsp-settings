@@ -3,7 +3,7 @@
 " haskell-language-server's one.
 augroup vim_lsp_settings_haskell_language_server_wrapper
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'haskell-language-server',
       \ 'cmd': {server_info->
       \     lsp_settings#get('haskell-language-server-wrapper', 'cmd',
@@ -41,5 +41,5 @@ augroup vim_lsp_settings_haskell_language_server_wrapper
       \     lsp_settings#get('haskell-language-server-wrapper', 'semantic_highlight',
       \     lsp_settings#get('haskell-language-server', 'semantic_highlight',
       \     {})),
-      \ }
+      \ })
 augroup END

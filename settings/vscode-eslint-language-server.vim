@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_eslint_language_server
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'vscode-eslint-language-server',
       \ 'cmd': {server_info->lsp_settings#get('vscode-eslint-language-server', 'cmd', [lsp_settings#exec_path('vscode-eslint-language-server')]+lsp_settings#get('vscode-eslint-language-server', 'args', ['--stdio']))},
       \ 'root_uri':{server_info->lsp_settings#get('vscode-eslint-language-server', 'root_uri', lsp_settings#root_uri('vscode-eslint-language-server'))},
@@ -36,5 +36,5 @@ augroup vim_lsp_settings_eslint_language_server
       \   'nodePath': v:null,
       \ }),
       \ 'semantic_highlight': lsp_settings#get('vscode-eslint-language-server', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END

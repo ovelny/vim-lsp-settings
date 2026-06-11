@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_tinymist
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'tinymist',
       \ 'cmd': {server_info->lsp_settings#get('tinymist', 'cmd', [lsp_settings#exec_path('tinymist')]+lsp_settings#get('tinymist', 'args', ['lsp']))},
       \ 'root_uri':{server_info->lsp_settings#get('tinymist', 'root_uri', lsp_settings#root_uri('tinymist'))},
@@ -10,5 +10,5 @@ augroup vim_lsp_settings_tinymist
       \ 'config': lsp_settings#get('tinymist', 'config', lsp_settings#server_config('tinymist')),
       \ 'workspace_config': lsp_settings#get('tinymist', 'workspace_config', {}),
       \ 'semantic_highlight': lsp_settings#get('tinymist', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END

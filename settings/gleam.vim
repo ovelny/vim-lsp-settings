@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_gleam
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'gleam',
       \ 'cmd': {server_info->lsp_settings#get('gleam', 'cmd', [lsp_settings#exec_path('gleam')]+lsp_settings#get('gleam', 'args', ['lsp']))},
       \ 'root_uri':{server_info->lsp_settings#get('gleam', 'root_uri', lsp_settings#root_uri('gleam'))},
@@ -10,5 +10,5 @@ augroup vim_lsp_settings_gleam
       \ 'config': lsp_settings#get('gleam', 'config', lsp_settings#server_config('gleam')),
       \ 'workspace_config': lsp_settings#get('gleam', 'workspace_config', {}),
       \ 'semantic_highlight': lsp_settings#get('gleam', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END

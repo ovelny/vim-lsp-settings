@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_yang_lsp
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'yang-lsp',
       \ 'cmd': {server_info->lsp_settings#get('yang-lsp', 'cmd', [lsp_settings#exec_path('yang-lsp')]+lsp_settings#get('yang-lsp', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('yang-lsp', 'root_uri', lsp_settings#root_uri('yang-lsp'))},
@@ -10,5 +10,5 @@ augroup vim_lsp_settings_yang_lsp
       \ 'config': lsp_settings#get('yang-lsp', 'config', lsp_settings#server_config('yang-lsp')),
       \ 'workspace_config': lsp_settings#get('yang-lsp', 'workspace_config', {}),
       \ 'semantic_highlight': lsp_settings#get('yang-lsp', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END

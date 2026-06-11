@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_marksman
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'marksman',
       \ 'cmd': {server_info->lsp_settings#get('marksman', 'cmd', [lsp_settings#exec_path('marksman')]+lsp_settings#get('marksman', 'args', ['server']))},
       \ 'root_uri':{server_info->lsp_settings#get('marksman', 'root_uri', lsp_settings#root_uri('marksman'))},
@@ -10,5 +10,5 @@ augroup vim_lsp_settings_marksman
       \ 'config': lsp_settings#get('marksman', 'config', lsp_settings#server_config('marksman')),
       \ 'workspace_config': lsp_settings#get('marksman', 'workspace_config', {}),
       \ 'semantic_highlight': lsp_settings#get('marksman', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END

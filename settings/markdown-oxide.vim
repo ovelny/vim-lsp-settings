@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_markdown-oxide
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'markdown-oxide',
       \ 'cmd': {server_info->lsp_settings#get('markdown-oxide', 'cmd', [lsp_settings#exec_path('markdown-oxide')]+lsp_settings#get('markdown-oxide', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('markdown-oxide', 'root_uri', lsp_settings#root_uri('markdown-oxide'))},
@@ -30,5 +30,5 @@ augroup vim_lsp_settings_markdown-oxide
       \   },
       \ }),
       \ 'semantic_highlight': lsp_settings#get('markdown-oxide', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END

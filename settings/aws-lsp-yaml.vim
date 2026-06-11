@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_aws_lsp_yaml
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'aws-lsp-yaml',
       \ 'cmd': {server_info->lsp_settings#get('aws-lsp-yaml', 'cmd', [lsp_settings#exec_path('aws-lsp-yaml')]+lsp_settings#get('aws-lsp-yaml', 'args', ['--stdio']))},
       \ 'root_uri':{server_info->lsp_settings#get('aws-lsp-yaml', 'root_uri', lsp_settings#root_uri('aws-lsp-yaml'))},
@@ -10,7 +10,7 @@ augroup vim_lsp_settings_aws_lsp_yaml
       \ 'config': lsp_settings#get('aws-lsp-yaml', 'config', lsp_settings#server_config('aws-lsp-yaml')),
       \ 'workspace_config': lsp_settings#merge('aws-lsp-yaml', 'workspace_config', {'yaml': {'format': {'enable': v:true}, 'schemas': lsp_settings#utils#load_schemas_map('aws-lsp-yaml')}}),
       \ 'semantic_highlight': lsp_settings#get('aws-lsp-yaml', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END
 
 function! s:set_schema(url) abort

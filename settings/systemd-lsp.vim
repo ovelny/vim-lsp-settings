@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_system_lsp
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'systemd-lsp',
       \ 'cmd': {server_info->lsp_settings#get('systemd-lsp', 'cmd', [lsp_settings#exec_path('systemd-lsp')]+lsp_settings#get('systemd-lsp', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('systemd-lsp', 'root_uri', lsp_settings#root_uri('systemd-lsp'))},
@@ -14,5 +14,5 @@ augroup vim_lsp_settings_system_lsp
       \ 'config': lsp_settings#get('systemd-lsp', 'config', lsp_settings#server_config('systemd-lsp')),
       \ 'workspace_config': lsp_settings#get('systemd-lsp', 'workspace_config', {}),
       \ 'semantic_highlight': lsp_settings#get('systemd-lsp', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END

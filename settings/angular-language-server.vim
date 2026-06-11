@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_angular_language_server
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'angular-language-server',
       \ 'cmd': {server_info->lsp_settings#get('angular-language-server', 'cmd', [lsp_settings#exec_path('angular-language-server')]+lsp_settings#get('angular-language-server', 'args', ['--stdio']))},
       \ 'root_uri':{server_info->lsp_settings#get('angular-language-server', 'root_uri', lsp_settings#root_uri('angular-language-server'))},
@@ -10,5 +10,5 @@ augroup vim_lsp_settings_angular_language_server
       \ 'config': lsp_settings#get('angular-language-server', 'config', lsp_settings#server_config('angular-language-server')),
       \ 'workspace_config': lsp_settings#get('angular-language-server', 'workspace_config', {}),
       \ 'semantic_highlight': lsp_settings#get('angular-language-server', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END

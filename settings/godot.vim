@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_godot
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'godot',
       \ 'tcp': {server_info->lsp_settings#get('godot', 'tcp', '127.0.0.1:6005')},
       \ 'root_uri':{server_info->lsp_settings#get('godot', 'root_uri', lsp_settings#root_uri('godot'))},
@@ -10,5 +10,5 @@ augroup vim_lsp_settings_godot
       \ 'config': lsp_settings#get('godot', 'config', lsp_settings#server_config('godot')),
       \ 'workspace_config': lsp_settings#get('godot', 'workspace_config', {}),
       \ 'semantic_highlight': lsp_settings#get('godot', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END

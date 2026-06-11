@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_cobol_language_support
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'cobol-language-support',
       \ 'cmd': {server_info->lsp_settings#get('cobol-language-support', 'cmd', [lsp_settings#exec_path('cobol-language-support')]+lsp_settings#get('cobol-language-support', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('cobol-language-server', 'root_uri', lsp_settings#root_uri('cobol-language-support'))},
@@ -10,5 +10,5 @@ augroup vim_lsp_settings_cobol_language_support
       \ 'config': lsp_settings#get('cobol-language-support', 'config', lsp_settings#server_config('cobol-language-support')),
       \ 'workspace_config': lsp_settings#get('cobol-language-support', 'workspace_config', {}),
       \ 'semantic_highlight': lsp_settings#get('cobol-language-support', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END

@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_eslint_language_server
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'eslint-language-server',
       \ 'cmd': {server_info->lsp_settings#get('eslint-language-server', 'cmd', [lsp_settings#exec_path('eslint-language-server')]+lsp_settings#get('eslint-language-server', 'args', ['--stdio']))},
       \ 'root_uri':{server_info->lsp_settings#get('eslint-language-server', 'root_uri', lsp_settings#root_uri('eslint-language-server'))},
@@ -33,5 +33,5 @@ augroup vim_lsp_settings_eslint_language_server
       \   'useFlatConfig': v:true,
       \ }),
       \ 'semantic_highlight': lsp_settings#get('eslint-language-server', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END

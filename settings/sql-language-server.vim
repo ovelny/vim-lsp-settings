@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_sql_language_server
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'sql-language-server',
       \ 'cmd': {server_info->lsp_settings#get('sql-language-server', 'cmd', [lsp_settings#exec_path('sql-language-server')]+lsp_settings#get('sql-language-server', 'args', ['up', '--method', 'stdio']))},
       \ 'root_uri':{server_info->lsp_settings#get('sql-language-server', 'root_uri', lsp_settings#root_uri('sql-language-server'))},
@@ -10,5 +10,5 @@ augroup vim_lsp_settings_sql_language_server
       \ 'config': lsp_settings#get('sql-language-server', 'config', lsp_settings#server_config('sql-language-server')),
       \ 'workspace_config': lsp_settings#get('sql-language-server', 'workspace_config', {}),
       \ 'semantic_highlight': lsp_settings#get('sql-language-server', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END

@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_prisma_language_server
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'prisma-language-server',
       \ 'cmd': {server_info->lsp_settings#get('prisma-language-server', 'cmd', [lsp_settings#exec_path('prisma-language-server')]+lsp_settings#get('prisma-language-server', 'args', ['--stdio']))},
       \ 'root_uri':{server_info->lsp_settings#get('prisma-language-server', 'root_uri', lsp_settings#root_uri('prisma-language-server'))},
@@ -14,5 +14,5 @@ augroup vim_lsp_settings_prisma_language_server
       \   }
       \ }),
       \ 'semantic_highlight': lsp_settings#get('prisma-language-server', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END

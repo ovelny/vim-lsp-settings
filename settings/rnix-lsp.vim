@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_rnix_lsp
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'rnix-lsp',
       \ 'cmd': {server_info->lsp_settings#get('rnix-lsp', 'cmd', lsp_settings#exec_path('rnix-lsp'))},
       \ 'root_uri':{server_info->lsp_settings#get('rnix-lsp', 'root_uri', lsp_settings#root_uri('rnix-lsp'))},
@@ -11,5 +11,5 @@ augroup vim_lsp_settings_rnix_lsp
       \ 'workspace_config': lsp_settings#get('rnix-lsp', 'workspace_config', {}),
       \ 'semantic_highlight': lsp_settings#get('rnix-lsp', 'semantic_highlight', {}),
       \ 'deprecated': v:true,
-      \ }
+      \ })
 augroup END

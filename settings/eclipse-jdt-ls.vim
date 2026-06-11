@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_eclipse_jdt_ls
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'eclipse-jdt-ls',
       \ 'cmd': {server_info->lsp_settings#get('eclipse-jdt-ls', 'cmd', [lsp_settings#exec_path('eclipse-jdt-ls')]+lsp_settings#get('eclipse-jdt-ls', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('eclipse-jdt-ls', 'root_uri', lsp_settings#root_uri('eclipse-jdt-ls'))},
@@ -10,7 +10,7 @@ augroup vim_lsp_settings_eclipse_jdt_ls
       \ 'config': lsp_settings#get('eclipse-jdt-ls', 'config', lsp_settings#server_config('eclipse-jdt-ls')),
       \ 'workspace_config': lsp_settings#get('eclipse-jdt-ls', 'workspace_config', {}),
       \ 'semantic_highlight': lsp_settings#get('eclipse-jdt-ls', 'semantic_highlight', {}),
-      \ }
+      \ })
   autocmd User lsp_setup call s:register_command()
 augroup END
 

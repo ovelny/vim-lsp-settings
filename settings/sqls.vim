@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_sqls
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'sqls',
       \ 'cmd': {server_info->lsp_settings#get('sqls', 'cmd', [lsp_settings#exec_path('sqls')]+lsp_settings#get('sqls', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('sqls', 'root_uri', lsp_settings#root_uri('sqls'))},
@@ -10,7 +10,7 @@ augroup vim_lsp_settings_sqls
       \ 'config': lsp_settings#get('sqls', 'config', lsp_settings#server_config('sqls')),
       \ 'workspace_config': lsp_settings#get('sqls', 'workspace_config', {}),
       \ 'semantic_highlight': lsp_settings#get('sqls', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END
 
 function! s:sqls_query() abort

@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_solargraph
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'solargraph',
       \ 'cmd': {server_info->lsp_settings#get('solargraph', 'cmd', [lsp_settings#exec_path('solargraph')]+lsp_settings#get('solargraph', 'args', ['stdio']))},
       \ 'root_uri':{server_info->lsp_settings#get('solargraph', 'root_uri', lsp_settings#root_uri('solargraph'))},
@@ -10,5 +10,5 @@ augroup vim_lsp_settings_solargraph
       \ 'config': lsp_settings#get('solargraph', 'config', lsp_settings#server_config('solargraph')),
       \ 'workspace_config': lsp_settings#get('solargraph', 'workspace_config', {}),
       \ 'semantic_highlight': lsp_settings#get('solargraph', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END

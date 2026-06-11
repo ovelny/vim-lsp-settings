@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_texlab
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'texlab',
       \ 'cmd': {server_info->lsp_settings#get('texlab', 'cmd', [lsp_settings#exec_path('texlab')]+lsp_settings#get('texlab', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('texlab', 'root_uri', lsp_settings#root_uri('texlab'))},
@@ -17,7 +17,7 @@ augroup vim_lsp_settings_texlab
       \   }
       \ }),
       \ 'semantic_highlight': lsp_settings#get('texlab', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END
 
 let s:build_status_success = 0

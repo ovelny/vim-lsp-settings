@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_clangd
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'clangd',
       \ 'cmd': {server_info->lsp_settings#get('clangd', 'cmd', [lsp_settings#exec_path('clangd')]+lsp_settings#get('clangd', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('clangd', 'root_uri', lsp_settings#root_uri('clangd'))},
@@ -10,7 +10,7 @@ augroup vim_lsp_settings_clangd
       \ 'config': lsp_settings#get('clangd', 'config', lsp_settings#server_config('clangd')),
       \ 'workspace_config': lsp_settings#get('clangd', 'workspace_config', {}),
       \ 'semantic_highlight': lsp_settings#get('clangd', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END
 
 function! s:handle_document_switch_source_header(ctx, server, type, has_extension, data) abort "ctx = {counter, list, last_command_id}

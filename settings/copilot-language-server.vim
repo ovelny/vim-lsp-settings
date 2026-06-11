@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_copilot_language_server
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'copilot-language-server',
       \ 'cmd': {server_info->lsp_settings#get('copilot-language-server', 'cmd', [lsp_settings#exec_path('copilot-language-server')]+lsp_settings#get('copilot-language-server', 'args', ['--stdio']))},
       \ 'root_uri':{server_info->lsp_settings#get('copilot-language-server', 'root_uri', lsp_settings#root_uri('copilot-language-server'))},
@@ -10,7 +10,7 @@ augroup vim_lsp_settings_copilot_language_server
       \ 'config': lsp_settings#get('copilot-language-server', 'config', lsp_settings#server_config('copilot-language-server')),
       \ 'workspace_config': lsp_settings#merge('copilot-language-server', 'workspace_config', {}),
       \ 'semantic_highlight': lsp_settings#get('copilot-language-server', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END
 
 function! s:handle_finish(data) abort

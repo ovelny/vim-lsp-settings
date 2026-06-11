@@ -2,7 +2,7 @@
 " but also hie's one.
 augroup vim_lsp_settings_hie_wrapper
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'hie',
       \ 'cmd': {server_info->
       \     lsp_settings#get('hie-wrapper', 'cmd',
@@ -40,5 +40,5 @@ augroup vim_lsp_settings_hie_wrapper
       \     lsp_settings#get('hie-wrapper', 'semantic_highlight',
       \     lsp_settings#get('hie', 'semantic_highlight',
       \     {})),
-      \ }
+      \ })
 augroup END

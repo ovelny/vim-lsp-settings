@@ -1,6 +1,6 @@
 augroup vim_lsp_settings_svls
   au!
-  LspRegisterServer {
+  call lsp_settings#register_server({
       \ 'name': 'svls',
       \ 'cmd': {server_info->lsp_settings#get('svls', 'cmd', [lsp_settings#exec_path('svls')]+lsp_settings#get('svls', 'args', []))},
       \ 'root_uri':{server_info->lsp_settings#get('svls', 'root_uri', lsp_settings#root_uri('svls'))},
@@ -10,5 +10,5 @@ augroup vim_lsp_settings_svls
       \ 'config': lsp_settings#get('svls', 'config', lsp_settings#server_config('svls')),
       \ 'workspace_config': lsp_settings#get('svls', 'workspace_config', {}),
       \ 'semantic_highlight': lsp_settings#get('svls', 'semantic_highlight', {}),
-      \ }
+      \ })
 augroup END
