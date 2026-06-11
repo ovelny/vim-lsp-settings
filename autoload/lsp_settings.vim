@@ -26,6 +26,8 @@ let s:settings = s:load_settings()
 
 let s:ftmap = {}
 
+let s:capture = v:null
+
 function! lsp_settings#installer_dir() abort
   return s:installer_dir
 endfunction
@@ -472,6 +474,10 @@ function! s:vim_lsp_suggest_plugin() abort
 endfunction
 
 function! lsp_settings#register_server(...) abort
+  if s:capture isnot v:null
+    call add(s:capture, a:000[0])
+    return
+  endif
   let l:name = a:000[0]['name']
   if get(a:000[0], 'deprecated', v:false) ==# v:true
     call lsp_settings#utils#warning(l:name . ' is deprecated')
@@ -481,6 +487,90 @@ function! lsp_settings#register_server(...) abort
     let a:000[0]['env'] = l:env
   endif
   return call('lsp#register_server', a:000)
+endfunction
+
+" Returns the server information that settings/<command>.vim would pass to
+" lsp#register_server(), without actually registering it.
+function! lsp_settings#server_info(command) abort
+  let l:script = printf('%s/%s.vim', s:settings_dir, a:command)
+  if !filereadable(l:script)
+    return {}
+  endif
+  let l:defined = exists(':LspRegisterServer') ==# 2
+  if !l:defined
+    command! -nargs=1 LspRegisterServer call lsp_settings#register_server(<args>)
+  endif
+  let l:prev = s:capture
+  let s:capture = []
+  try
+    exe 'source' fnameescape(l:script)
+    let l:captured = s:capture
+  finally
+    let s:capture = l:prev
+    if !l:defined
+      delcommand LspRegisterServer
+    endif
+  endtry
+  for l:info in l:captured
+    if get(l:info, 'name', '') ==# a:command
+      return l:info
+    endif
+  endfor
+  return empty(l:captured) ? {} : l:captured[0]
+endfunction
+
+" Returns the command used to launch the given server, as a list including
+" default arguments and user overrides. Returns an empty list if the server
+" is not available.
+function! lsp_settings#server_command(command) abort
+  let l:info = lsp_settings#server_info(a:command)
+  if !has_key(l:info, 'cmd')
+    return []
+  endif
+  let l:Cmd = l:info['cmd']
+  if type(l:Cmd) ==# v:t_func
+    try
+      let l:Cmd = l:Cmd(l:info)
+    catch
+      return []
+    endtry
+  endif
+  return type(l:Cmd) ==# v:t_list ? l:Cmd : []
+endfunction
+
+" Returns the command names of the servers vim-lsp-settings would launch for
+" the given filetype: disabled servers, servers filtered out by
+" g:lsp_settings_filetype_<ft>, servers with missing requires and servers
+" not installed nor found in $PATH are excluded. Fallback checkers are not
+" taken into account.
+function! lsp_settings#filetype_servers(ft) abort
+  if !has_key(s:settings, a:ft)
+    return []
+  endif
+  let l:default = s:get_filetype_default(a:ft)
+  let l:servers = []
+  for l:conf in s:settings[a:ft]
+    if index(l:servers, l:conf.command) >= 0
+      continue
+    endif
+    if s:is_server_disabled(l:conf)
+      continue
+    endif
+    if s:is_server_filtered_by_default(l:conf.command, l:default)
+      continue
+    endif
+    if s:has_missing_requires(l:conf)
+      continue
+    endif
+    if empty(lsp_settings#get(l:conf.command, 'cmd', [])) && !lsp_settings#executable(l:conf.command)
+      continue
+    endif
+    call add(l:servers, l:conf.command)
+    if a:ft !=# '_' && type(l:default) !=# v:t_list
+      break
+    endif
+  endfor
+  return l:servers
 endfunction
 
 function! s:vim_lsp_load_or_suggest(ft) abort
