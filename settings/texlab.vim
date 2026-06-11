@@ -151,7 +151,7 @@ function! s:on_lsp_buffer_enabled() abort
   nnoremap <buffer> <plug>(lsp-document-forwardsearch) :<c-u>call <SID>document_forwardsearch()<cr>
 endfunction
 
-augroup lsp_install_texlab
+augroup vim_lsp_settings_texlab
   au!
   autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END

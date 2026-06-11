@@ -278,7 +278,7 @@ endfunction
 function! s:register_command() abort
   if get(s:, 'setup') | return | endif
   let s:setup = 1
-  augroup vimlsp_settings_rust_analyzer
+  augroup vim_lsp_settings_rust_analyzer_commands
     au!
   augroup END
   if exists('*lsp#register_command')

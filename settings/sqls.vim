@@ -34,7 +34,7 @@ function! s:on_lsp_buffer_enabled() abort
   command! -buffer LspSQLQuery call <SID>sqls_query()
 endfunction
 
-augroup lsp_install_sqls
+augroup vim_lsp_settings_sqls
   au!
   autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END

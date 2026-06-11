@@ -29,7 +29,7 @@ function! s:on_lsp_buffer_enabled() abort
   command! -buffer -nargs=1 LspJsonSetSchema call <SID>set_schema(<q-args>)
 endfunction
 
-augroup lsp_install_json
+augroup vim_lsp_settings_vscode_json_language_server
   au!
   autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END

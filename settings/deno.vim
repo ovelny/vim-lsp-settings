@@ -425,7 +425,7 @@ function! s:register_command() abort
     call lsp#register_command('', function('s:noop'))
 endfunction
 
-augroup lsp_install_deno
+augroup vim_lsp_settings_deno
   au!
   autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
   autocmd User lsp_setup call s:register_command()

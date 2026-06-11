@@ -22,7 +22,7 @@ function! s:on_lsp_buffer_enabled() abort
   "   \ )
 endfunction
 
-augroup lsp_install_mozuku_lspl
+augroup vim_lsp_settings_mozuku_lsp
   au!
   autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END

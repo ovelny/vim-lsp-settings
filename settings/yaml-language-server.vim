@@ -26,7 +26,7 @@ function! s:on_lsp_buffer_enabled() abort
   endif
 endfunction
 
-augroup lsp_install_yaml
+augroup vim_lsp_settings_yaml_language_server
   au!
   autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END

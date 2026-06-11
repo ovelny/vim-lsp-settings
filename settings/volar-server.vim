@@ -70,7 +70,7 @@ function! s:on_lsp_buffer_enabled() abort
   endif
 endfunction
 
-augroup lsp_install_volar_server
+augroup vim_lsp_settings_volar_server
   au!
   autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END

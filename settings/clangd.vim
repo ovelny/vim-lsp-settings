@@ -84,7 +84,7 @@ function! s:on_lsp_buffer_enabled() abort
   nnoremap <buffer> <plug>(lsp-switch-source-header) :<c-u>call <SID>document_switch_source_header()<cr>
 endfunction
 
-augroup lsp_install_clangd
+augroup vim_lsp_settings_clangd
   au!
   autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
