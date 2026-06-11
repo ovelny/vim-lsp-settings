@@ -34,67 +34,64 @@ function! s:setup_plugins() abort
   return plugins
 endfunction
 
-augroup vim_lsp_settings_vtsls
-  au!
-  call lsp_settings#register_server({
-      \ 'name': 'vtsls',
-      \ 'cmd': {server_info->lsp_settings#get('vtsls', 'cmd', [lsp_settings#exec_path('vtsls')]+lsp_settings#get('vtsls', 'args', ['--stdio']))},
-      \ 'root_uri':{server_info->lsp_settings#get('vtsls', 'root_uri', lsp_settings#root_uri('vtsls'))},
-      \ 'initialization_options': lsp_settings#get('vtsls', 'initialization_options', {}),
-      \ 'allowlist': lsp_settings#get('vtsls', 'allowlist', ['javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'typescript.tsx', 'vue']),
-      \ 'blocklist': lsp_settings#get('vtsls', 'blocklist', s:get_blocklist()),
-      \ 'config': lsp_settings#get('vtsls', 'config', lsp_settings#server_config('vtsls')),
-      \ 'workspace_config': lsp_settings#get('vtsls', 'workspace_config', {
-      \   'typescript': {
-      \     'inlayHints': {
-      \       'parameterNames': {
-      \         'enabled': 'all',
-      \       },
-      \       'parameterTypes': {
-      \         'enabled': v:true,
-      \       },
-      \       'variableTypes': {
-      \         'enabled': v:true,
-      \       },
-      \       'propertyDeclarationTypes': {
-      \         'enabled': v:true,
-      \       },
-      \       'functionLikeReturnTypes': {
-      \         'enabled': v:true,
-      \       },
-      \       'enumMemberValues': {
-      \         'enabled': v:true,
-      \       },
-      \     },
-      \   },
-      \   'javascript': {
-      \     'inlayHints': {
-      \       'parameterNames': {
-      \         'enabled': 'all',
-      \       },
-      \       'parameterTypes': {
-      \         'enabled': v:true,
-      \       },
-      \       'variableTypes': {
-      \         'enabled': v:true,
-      \       },
-      \       'propertyDeclarationTypes': {
-      \         'enabled': v:true,
-      \       },
-      \       'functionLikeReturnTypes': {
-      \         'enabled': v:true,
-      \       },
-      \       'enumMemberValues': {
-      \         'enabled': v:true,
-      \       },
-      \     },
-      \   },
-      \   'vtsls': {
-      \     'tsserver': {
-      \       'globalPlugins': s:setup_plugins(),
-      \     },
-      \   },
-      \ }),
-      \ 'semantic_highlight': lsp_settings#get('vtsls', 'semantic_highlight', {}),
-      \ })
-augroup END
+call lsp_settings#register_server({
+    \ 'name': 'vtsls',
+    \ 'cmd': {server_info->lsp_settings#get('vtsls', 'cmd', [lsp_settings#exec_path('vtsls')]+lsp_settings#get('vtsls', 'args', ['--stdio']))},
+    \ 'root_uri':{server_info->lsp_settings#get('vtsls', 'root_uri', lsp_settings#root_uri('vtsls'))},
+    \ 'initialization_options': lsp_settings#get('vtsls', 'initialization_options', {}),
+    \ 'allowlist': lsp_settings#get('vtsls', 'allowlist', ['javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'typescript.tsx', 'vue']),
+    \ 'blocklist': lsp_settings#get('vtsls', 'blocklist', s:get_blocklist()),
+    \ 'config': lsp_settings#get('vtsls', 'config', lsp_settings#server_config('vtsls')),
+    \ 'workspace_config': lsp_settings#get('vtsls', 'workspace_config', {
+    \   'typescript': {
+    \     'inlayHints': {
+    \       'parameterNames': {
+    \         'enabled': 'all',
+    \       },
+    \       'parameterTypes': {
+    \         'enabled': v:true,
+    \       },
+    \       'variableTypes': {
+    \         'enabled': v:true,
+    \       },
+    \       'propertyDeclarationTypes': {
+    \         'enabled': v:true,
+    \       },
+    \       'functionLikeReturnTypes': {
+    \         'enabled': v:true,
+    \       },
+    \       'enumMemberValues': {
+    \         'enabled': v:true,
+    \       },
+    \     },
+    \   },
+    \   'javascript': {
+    \     'inlayHints': {
+    \       'parameterNames': {
+    \         'enabled': 'all',
+    \       },
+    \       'parameterTypes': {
+    \         'enabled': v:true,
+    \       },
+    \       'variableTypes': {
+    \         'enabled': v:true,
+    \       },
+    \       'propertyDeclarationTypes': {
+    \         'enabled': v:true,
+    \       },
+    \       'functionLikeReturnTypes': {
+    \         'enabled': v:true,
+    \       },
+    \       'enumMemberValues': {
+    \         'enabled': v:true,
+    \       },
+    \     },
+    \   },
+    \   'vtsls': {
+    \     'tsserver': {
+    \       'globalPlugins': s:setup_plugins(),
+    \     },
+    \   },
+    \ }),
+    \ 'semantic_highlight': lsp_settings#get('vtsls', 'semantic_highlight', {}),
+    \ })

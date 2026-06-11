@@ -25,17 +25,14 @@ let g:vim_lsp_settings_astro_options = {
       \   },
       \ }
 
-augroup vim_lsp_settings_astro_ls
-  au!
-  call lsp_settings#register_server({
-        \ 'name': 'astro-ls',
-        \ 'cmd': {server_info->lsp_settings#get('astro-ls', 'cmd', [lsp_settings#exec_path('astro-ls')]+lsp_settings#get('astro-ls', 'args', ['--stdio']))},
-        \ 'root_uri':{server_info->lsp_settings#get('astro-ls', 'root_uri', lsp_settings#root_uri('astro-ls'))},
-        \ 'initialization_options': lsp_settings#get('astro-ls', 'initialization_options', s:setup_ts_path(g:vim_lsp_settings_astro_options)),
-        \ 'allowlist': lsp_settings#get('astro-ls', 'allowlist', ['astro']),
-        \ 'blocklist': lsp_settings#get('astro-ls', 'blocklist', []),
-        \ 'config': lsp_settings#get('astro-ls', 'config', lsp_settings#server_config('astro-ls')),
-        \ 'workspace_config': lsp_settings#get('astro-ls', 'workspace_config', {}),
-        \ 'semantic_highlight': lsp_settings#get('astro-ls', 'semantic_highlight', {}),
-        \ })
-augroup END
+call lsp_settings#register_server({
+      \ 'name': 'astro-ls',
+      \ 'cmd': {server_info->lsp_settings#get('astro-ls', 'cmd', [lsp_settings#exec_path('astro-ls')]+lsp_settings#get('astro-ls', 'args', ['--stdio']))},
+      \ 'root_uri':{server_info->lsp_settings#get('astro-ls', 'root_uri', lsp_settings#root_uri('astro-ls'))},
+      \ 'initialization_options': lsp_settings#get('astro-ls', 'initialization_options', s:setup_ts_path(g:vim_lsp_settings_astro_options)),
+      \ 'allowlist': lsp_settings#get('astro-ls', 'allowlist', ['astro']),
+      \ 'blocklist': lsp_settings#get('astro-ls', 'blocklist', []),
+      \ 'config': lsp_settings#get('astro-ls', 'config', lsp_settings#server_config('astro-ls')),
+      \ 'workspace_config': lsp_settings#get('astro-ls', 'workspace_config', {}),
+      \ 'semantic_highlight': lsp_settings#get('astro-ls', 'semantic_highlight', {}),
+      \ })

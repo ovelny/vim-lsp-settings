@@ -1,15 +1,12 @@
-augroup vim_lsp_settings_volar_server
-  au!
-  call lsp_settings#register_server({
-  \ 'name': 'volar-server',
-  \ 'cmd': {server_info->lsp_settings#get('volar-server', 'cmd', [lsp_settings#exec_path('volar-server')]+lsp_settings#get('volar-server', 'args', ['--stdio']))},
-  \ 'root_uri':{server_info->lsp_settings#get('volar-server', 'root_uri', lsp_settings#root_uri('volar-server'))},
-  \ 'initialization_options': lsp_settings#get('volar-server', 'initialization_options', v:null),
-  \ 'allowlist': lsp_settings#get('volar-server', 'allowlist', ['vue', 'typescript']),
-  \ 'blocklist': lsp_settings#get('volar-server', 'blocklist', []),
-  \ 'config': lsp_settings#get('volar-server', 'config', lsp_settings#server_config('volar-server')),
-  \ })
-augroup END
+call lsp_settings#register_server({
+\ 'name': 'volar-server',
+\ 'cmd': {server_info->lsp_settings#get('volar-server', 'cmd', [lsp_settings#exec_path('volar-server')]+lsp_settings#get('volar-server', 'args', ['--stdio']))},
+\ 'root_uri':{server_info->lsp_settings#get('volar-server', 'root_uri', lsp_settings#root_uri('volar-server'))},
+\ 'initialization_options': lsp_settings#get('volar-server', 'initialization_options', v:null),
+\ 'allowlist': lsp_settings#get('volar-server', 'allowlist', ['vue', 'typescript']),
+\ 'blocklist': lsp_settings#get('volar-server', 'blocklist', []),
+\ 'config': lsp_settings#get('volar-server', 'config', lsp_settings#server_config('volar-server')),
+\ })
 
 function s:on_tsserver_request(id, data) abort
   let body = a:data['response']['result']['body']
