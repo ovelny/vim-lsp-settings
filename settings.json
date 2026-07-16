@@ -1221,12 +1221,10 @@
   ],
   "moonbit": [
     {
-      "command": "moonbit-lsp",
+      "command": "moon-lsp",
       "url": "https://github.com/moonbitlang/moon",
       "description": "The build system and package manager for MoonBit",
-      "requires": [
-        "node"
-      ],
+      "requires": [],
       "vim_plugin": {
         "extensions": [
           "mbt"
